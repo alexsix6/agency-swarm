@@ -1,0 +1,265 @@
+{
+  "name": "Enterprise_Management_Agency",
+  "apiIntegrationId": "5jYQQ9KQAg80Qd9b9qln",
+  "agents": [
+    {
+      "name": "ManagerAgent",
+      "role": "Central coordinator and decision maker for the agency",
+      "tools": [
+        {
+          "name": "TaskCoordination",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "task_description": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "assigned_agent": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "priority": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "deadline": {
+                "type": "string",
+                "description": "",
+                "required": false
+              }
+            }
+          }
+        },
+        {
+          "name": "ProgressMonitor",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "action": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "progress_update": {
+                "type": "integer",
+                "description": "",
+                "required": false
+              }
+            }
+          }
+        },
+        {
+          "name": "DecisionSupport",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "decision_type": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "context": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "options": {
+                "type": "array",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PoliciesAgent",
+      "role": "Corporate policy and regulation expert",
+      "tools": [
+        {
+          "name": "DocumentSearch",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "search_query": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "document_type": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        },
+        {
+          "name": "ComplianceChecker",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "activity_description": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "applicable_policies": {
+                "type": "array",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "StatisticsAgent",
+      "role": "Data analysis and insights generator",
+      "tools": [
+        {
+          "name": "BigQueryConnector",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "dataset": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        },
+        {
+          "name": "DataVisualizer",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "data_source": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "visualization_type": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "HyvisionAgent",
+      "role": "Hyvision software technical specialist",
+      "tools": [
+        {
+          "name": "TechnicalDocManager",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "doc_type": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "content": {
+                "type": "string",
+                "description": "",
+                "required": false
+              }
+            }
+          }
+        },
+        {
+          "name": "SystemDiagnostics",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "diagnostic_type": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "system_component": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RiskAnalysisAgent",
+      "role": "Physical risk assessment specialist",
+      "tools": [
+        {
+          "name": "RiskEvaluator",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "area": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "risk_category": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        },
+        {
+          "name": "MitigationPlanner",
+          "type": "function",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "risk_id": {
+                "type": "string",
+                "description": "",
+                "required": true
+              },
+              "risk_level": {
+                "type": "string",
+                "description": "",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

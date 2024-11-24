@@ -1,0 +1,73 @@
+{
+  "agency_name": "Enterprise_Management_Agency",
+  "version": "1.0.0",
+  "description": "Sistema multiagente para gestion empresarial automatizada",
+  "agents": [
+    {
+      "name": "ManagerAgent",
+      "description": "Central coordinator and decision maker for the agency",
+      "instructions": "Manages project planning, task assignment, and progress monitoring",
+      "tools": [
+        {
+          "name": "TaskCoordination",
+          "description": "Coordina y asigna tareas a diferentes agentes",
+          "parameters": {
+            "task_description": {
+              "type": "string",
+              "description": "Descripcion detallada de la tarea",
+              "required": true
+            },
+            "assigned_agent": {
+              "type": "string",
+              "description": "Agente al que se asigna la tarea",
+              "required": true
+            },
+            "priority": {
+              "type": "string",
+              "description": "Prioridad de la tarea",
+              "required": true
+            }
+          }
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 4000
+    },
+    {
+      "name": "PoliciesAgent",
+      "description": "Corporate policy and regulation expert",
+      "instructions": "Manages and interprets corporate policies, ensuring compliance and providing guidance on regulatory matters.",
+      "tools": [
+        {
+          "name": "DocumentSearch",
+          "description": "Busca documentos de politicas",
+          "parameters": {
+            "search_query": {
+              "type": "string",
+              "description": "Terminos de busqueda",
+              "required": true
+            },
+            "document_type": {
+              "type": "string",
+              "description": "Tipo de documento",
+              "required": true
+            }
+          }
+        }
+      ],
+      "temperature": 0.6,
+      "max_tokens": 4000
+    }
+  ],
+  "communication_flows": [
+    [
+      "ManagerAgent",
+      "PoliciesAgent"
+    ]
+  ],
+  "api_configurations": {
+    "openai": {
+      "api_key_env": "OPENAI_API_KEY"
+    }
+  }
+}
