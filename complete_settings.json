@@ -1,0 +1,296 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Enterprise Management Agency",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "ManagerAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Central coordinator and decision maker"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PoliciesAgent",
+                "StatisticsAgent",
+                "HyvisionAgent",
+                "RiskAnalysisAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "task_description": {
+                      "type": "string",
+                      "description": "Task details"
+                    },
+                    "assigned_agent": {
+                      "type": "string",
+                      "description": "Agent to assign"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PoliciesAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Policy and compliance specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "policy_query": {
+                      "type": "string",
+                      "description": "Policy search query"
+                    },
+                    "document_type": {
+                      "type": "string",
+                      "description": "Type of policy document"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StatisticsAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Data analysis specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent",
+                "RiskAnalysisAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "BigQuery query"
+                    },
+                    "dataset": {
+                      "type": "string",
+                      "description": "Dataset name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "HyvisionAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Technical system specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "system_component": {
+                      "type": "string",
+                      "description": "Component to analyze"
+                    },
+                    "action_type": {
+                      "type": "string",
+                      "description": "Type of technical action"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RiskAnalysisAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Risk assessment specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent",
+                "StatisticsAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "area": {
+                      "type": "string",
+                      "description": "Area to evaluate"
+                    },
+                    "risk_category": {
+                      "type": "string",
+                      "description": "Risk category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "communication_flows": {
+    "type": "object",
+    "properties": {
+      "synchronous": {
+        "type": "boolean",
+        "default": true
+      },
+      "flows": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "default": [
+          [
+            "ManagerAgent",
+            "PoliciesAgent"
+          ],
+          [
+            "ManagerAgent",
+            "StatisticsAgent"
+          ],
+          [
+            "ManagerAgent",
+            "HyvisionAgent"
+          ],
+          [
+            "ManagerAgent",
+            "RiskAnalysisAgent"
+          ],
+          [
+            "StatisticsAgent",
+            "RiskAnalysisAgent"
+          ]
+        ]
+      }
+    }
+  }
+}

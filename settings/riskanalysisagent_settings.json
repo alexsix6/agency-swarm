@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RiskAnalysisAgent Specification",
+    "version": "1.0.0",
+    "generated_at": "2024-11-24 22:20:48"
+  },
+  "components": {
+    "schemas": {
+      "RiskAnalysisAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Risk assessment specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent",
+                "StatisticsAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "area": {
+                      "type": "string",
+                      "description": "Area to evaluate"
+                    },
+                    "risk_category": {
+                      "type": "string",
+                      "description": "Risk category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "synchronous": true,
+    "collaborators": [
+      "ManagerAgent",
+      "StatisticsAgent"
+    ]
+  }
+}

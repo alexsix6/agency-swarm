@@ -1,0 +1,66 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "PoliciesAgent Specification",
+    "version": "1.0.0",
+    "generated_at": "2024-11-24 22:20:48"
+  },
+  "components": {
+    "schemas": {
+      "PoliciesAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Policy and compliance specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "policy_query": {
+                      "type": "string",
+                      "description": "Policy search query"
+                    },
+                    "document_type": {
+                      "type": "string",
+                      "description": "Type of policy document"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "synchronous": true,
+    "collaborators": [
+      "ManagerAgent"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "StatisticsAgent Specification",
+    "version": "1.0.0",
+    "generated_at": "2024-11-24 22:20:48"
+  },
+  "components": {
+    "schemas": {
+      "StatisticsAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Data analysis specialist"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ManagerAgent",
+                "RiskAnalysisAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "BigQuery query"
+                    },
+                    "dataset": {
+                      "type": "string",
+                      "description": "Dataset name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "synchronous": true,
+    "collaborators": [
+      "ManagerAgent",
+      "RiskAnalysisAgent"
+    ]
+  }
+}

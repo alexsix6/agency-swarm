@@ -1,0 +1,75 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Enterprise Management Agency Tools",
+    "description": "Ecosystem of specialized agents for enterprise management",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/ManagerAgent/TaskCoordination": {
+      "post": {
+        "operationId": "TaskCoordination",
+        "description": "Coordina y asigna tareas a diferentes agentes",
+        "x-openai-isConsequential": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "task_description": {
+                    "type": "string",
+                    "description": "Descripci\u00f3n de la tarea"
+                  },
+                  "assigned_agent": {
+                    "type": "string",
+                    "description": "Agente asignado"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "description": "Prioridad"
+                  }
+                },
+                "required": [
+                  "task_description",
+                  "assigned_agent",
+                  "priority"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PoliciesAgent/DocumentSearch": {
+      "post": {
+        "operationId": "DocumentSearch",
+        "description": "Busca documentos de pol\u00edticas",
+        "x-openai-isConsequential": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "search_query": {
+                    "type": "string",
+                    "description": "T\u00e9rminos de b\u00fasqueda"
+                  },
+                  "document_type": {
+                    "type": "string",
+                    "description": "Tipo de documento"
+                  }
+                },
+                "required": [
+                  "search_query",
+                  "document_type"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

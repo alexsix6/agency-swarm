@@ -1,0 +1,72 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ManagerAgent Specification",
+    "version": "1.0.0",
+    "generated_at": "2024-11-24 22:20:48"
+  },
+  "components": {
+    "schemas": {
+      "ManagerAgent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "default": "Central coordinator and decision maker"
+          },
+          "collaborators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PoliciesAgent",
+                "StatisticsAgent",
+                "HyvisionAgent",
+                "RiskAnalysisAgent"
+              ]
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "task_description": {
+                      "type": "string",
+                      "description": "Task details"
+                    },
+                    "assigned_agent": {
+                      "type": "string",
+                      "description": "Agent to assign"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "synchronous": true,
+    "collaborators": [
+      "PoliciesAgent",
+      "StatisticsAgent",
+      "HyvisionAgent",
+      "RiskAnalysisAgent"
+    ]
+  }
+}
