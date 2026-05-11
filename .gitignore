@@ -163,3 +163,9 @@ settings.json
 .DS_Store
 tests/test_agents/
 test_agents/
+# Sprint M2 cleanup (2026-05-11): SA firebase-adminsdk-11rz5 DEAD en GCP,
+# pero blindar contra re-add accidental
+*firebase-adminsdk*.json
+**/*-firebase-adminsdk-*.json
+.credentials/
+*-service-account*.json
